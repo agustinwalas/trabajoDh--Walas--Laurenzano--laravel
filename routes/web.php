@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/index', function(){return view('index');});
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'miControlador@index');
+Route::get('/productos/agregar', 'productosControlador@agregar');
+Route::post('/productos/guardar', 'productosControlador@guardar');
+Route::get('/productos/listar', 'productosControlador@listar');
+Route::get('/productos/editar/{{id}}', 'productosControlador@editar');
+Route::post('/productos/editarG/{{id}}', 'productosControlador@editarGuardar');
+Route::get('productos/mostrar/', 'productosControlador@mostrar');
