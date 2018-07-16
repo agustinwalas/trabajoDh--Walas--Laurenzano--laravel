@@ -27,6 +27,7 @@ public function guardar(Request $request){
     'modelo_id' => 'required',
     'precio' => 'required',
     'estado' => 'required',
+    'poster' => 'image'
    ];
    $errors = [
     'titulo.required' => 'Titulo requerido',
@@ -35,28 +36,59 @@ public function guardar(Request $request){
     ];
     $this->validate($request, $reglas, $errors);
 
-    $producto= producto::create(
-      $request->except(['_token'])
-    );
+    $ruta_image='';
+    if($request->file('poster')){
+      $ruta_image = $request->file('poster')->store('posters', 'public');
+    }
 
-    dd($producto);
 
+    $producto= producto::create([
+      'titulo' => $request->input('titulo'),
+      'marca_id' => $request->input('marca_id'),
+      'modelo_id' => $request->input('modelo_id'),
+      'precio' => $request->input('precio'),
+      'estado' => $request->input('estado'),
+      'poster' => $ruta_image
+    ]);
 }
 
 public function editar($id){
 $producto= producto::find($id);
-return view('productos.editar') -> with('peli',$pelicula);
+return view('productos.editar') -> with('producto',$producto);
 }
 
 public function editarGuardar(request $request){
-
   $reglas = [
-    'titulo.required' => 'required|unique:titulo',
-     'marca.required' => 'required',
-      'modelo.required' => 'required',
-      'precio' => 'required',
-
+    'titulo' => 'required',
+    'marca_id' => 'required',
+    'modelo_id' => 'required',
+    'precio' => 'required',
+    'estado' => 'required',
+    'poster' => 'image'
    ];
+   $errors = [
+    'titulo.required' => 'Titulo requerido',
+    'precio.required' => 'Indique un precio',
+
+    ];
+    $this->validate($request, $reglas, $errors);
+
+    $ruta_image='';
+    if($request->file('poster')){
+      $ruta_image = $request->file('poster')->store('posters', 'public');
+    }
+
+
+    $producto= producto::fill([
+      'titulo' => $request->input('titulo'),
+      'marca_id' => $request->input('marca_id'),
+      'modelo_id' => $request->input('modelo_id'),
+      'precio' => $request->input('precio'),
+      'estado' => $request->input('estado'),
+      'poster' => $ruta_image
+    ]);
+
+    $producto->save();
 }
 
 public function mostrar(){

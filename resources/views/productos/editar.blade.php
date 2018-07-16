@@ -1,8 +1,13 @@
 @extends('plantillas.primer')
 
 @section('contenido')
- <h1>Edita tu Producto</h1>
- <form class="" action="/productos/guardar  " method="post"enctype='multipart/form-data'>
+  <link rel="stylesheet" href="/css/aa.css">
+ <h1>Edita Tu producto</h1>
+
+
+
+ <form class="" action="/productos/editarG" method="post" enctype='multipart/form-data'>
+
    {{ csrf_field() }}
 <div class="form-group {{ $errors->has('titulo')?'has-error':'' }}">
    <label for="titulo">Título</label>
@@ -20,14 +25,14 @@
 </div>
 
   <label class="form-group">marca:</label>
-  <select class="" name="marca">
+  <select class="" name="marca_id">
   @foreach ($marcas as $marca )
     <option value="{{$marca->id}}">{{$marca->marca}}</option>
   @endforeach
 </select>
 
 <label class="form-group">modelo:</label>
-<select class="" name="modelo">
+<select class="" name="modelo_id">
 @foreach ($modelos as $modelo )
   <option value="{{$modelo->id}}">{{$modelo->modelo}}</option>
 @endforeach
@@ -36,9 +41,12 @@
 <div>
   <label class="form-group">Estado:</label>
   <select class="" name="estado">
-  <option value="">Nuevo</option>
-  <option value="">Usado</option>
+    <option value="nuevo">Nuevo</option>
+    <option value="usado">Usado</option>
   </select>
+  @if($errors->has('estado'))
+    <span class="text-danger">{{ $errors->first('estado') }}</span>
+  @endif
 </div>
 
 <div class="form-group {{ $errors->has('poster')?'has-error':'' }}">
@@ -49,7 +57,7 @@
    @endif
 </div>
 
-   <button type="submit" class="btn btn-primary">Publicar Producto</button>
+   <button type="submit" class="btn btn-primary">Editar Producto</button>
    </form>
 
 

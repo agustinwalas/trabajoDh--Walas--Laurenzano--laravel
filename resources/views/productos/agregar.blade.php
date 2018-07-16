@@ -6,7 +6,7 @@
 
 
 
- <form class="" action="/productos/guardar" method="post"enctype='multipart/form-data'>
+ <form class="" action="/productos/guardar" method="post" enctype='multipart/form-data'>
 
    {{ csrf_field() }}
 <div class="form-group {{ $errors->has('titulo')?'has-error':'' }}">
