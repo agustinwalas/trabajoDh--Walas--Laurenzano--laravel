@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class marca extends Model
+class Marca extends Model
 {
     protected $guarded = [];
-    protected $marca = 'marca';
+    protected $table = 'marca';
 
     public function modelo(){
       return $this->hasMany(modelo::class);

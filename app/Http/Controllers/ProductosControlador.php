@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\marca;
-use App\modelo;
+use App\Marca;
+use App\Modelo;
 use App\Producto;
 
 class ProductosControlador extends Controller
 {
     public function listar(){
     $productos = Producto::all();
+
       return view('productos.listar')-> with ('productos', $productos);}
 
 
  public function agregar(){
-     $marca = marca::all();
-     $modelos = modelo::all();
+     $marca = Marca::all();
+     $modelos = Modelo::all();
 return view ('productos.agregar')->with('modelos',$modelos) ->with('marcas',$marca);
 }
 
@@ -25,14 +26,17 @@ public function guardar(Request $request){
     'titulo' => 'required',
     'marca_id' => 'required',
     'modelo_id' => 'required',
-    'precio' => 'required',
+    'precio' => 'required|integer',
     'estado' => 'required',
+    'km' => 'required|integer',
     'poster' => 'image'
    ];
    $errors = [
     'titulo.required' => 'Titulo requerido',
     'precio.required' => 'Indique un precio',
-
+    'precio.integer' => 'ingrese un valor numerico',
+    'km.required' => 'Indique el kilometraje del vehiculo',
+    'km.integer' => 'Ingrese un valor numerico'
     ];
     $this->validate($request, $reglas, $errors);
 
@@ -48,8 +52,10 @@ public function guardar(Request $request){
       'modelo_id' => $request->input('modelo_id'),
       'precio' => $request->input('precio'),
       'estado' => $request->input('estado'),
+      'km' => $request->input('km'),
       'poster' => $ruta_image
     ]);
+
 }
 
 public function editar($id){
@@ -75,7 +81,7 @@ public function editarGuardar(request $request){
 
     $ruta_image='';
     if($request->file('poster')){
-      $ruta_image = $request->file('poster')->store('posters', 'public');
+      $ruta_image = $request->file('posters')->storeAs('posters', 'public');
     }
 
 

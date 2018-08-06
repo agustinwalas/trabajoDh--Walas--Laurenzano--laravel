@@ -1,12 +1,12 @@
 @extends('plantillas.primer')
 
 @section('contenido')
-  <link rel="stylesheet" href="/css/aa.css">
- <h1>Edita Tu producto</h1>
+  <link rel="stylesheet" href="/css/agregar.css">
+ <h1>Venda Su auto ya!!</h1>
 
 
 
- <form class="" action="/productos/editarG" method="post" enctype='multipart/form-data'>
+ <form class="agregar" action="/productos/guardar" method="post" enctype='multipart/form-data'>
 
    {{ csrf_field() }}
 <div class="form-group {{ $errors->has('titulo')?'has-error':'' }}">
@@ -57,7 +57,7 @@
    @endif
 </div>
 
-   <button type="submit" class="btn btn-primary">Editar Producto</button>
+   <button type="submit" class="btn btn-primary">Publicar Producto</button>
    </form>
 
 

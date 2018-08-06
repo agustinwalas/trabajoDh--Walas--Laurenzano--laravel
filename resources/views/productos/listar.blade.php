@@ -1,14 +1,20 @@
 @extends('plantillas.primer')
 @section('contenido')
-  <h1>listado de productos</h1>
-  <a href="/productos/agregar">agregar productos</a>
-  <ul>
 
+<div class="autos">
     @foreach ($productos as $producto)
-      <div class="col-sm-12">
-        <a href="/productos/listar/{{$producto->id}}">{{$producto->titulo}} {{$producto->marca}} {{$producto->modelo}} {{$producto->precio}}</a>
-
+      <div class="auto">
+        <div class="imagen">
+          <img src="/storage/{{$producto->poster}}">
+        </div>
+        <h3>{{$producto->titulo}}</h3>
+        <ul class="datos-secundarios">
+          <li> {{$producto->precio}}$ </li>
+          <li>{{$producto->estado}}</li>
+          <li>{{$producto->km}}km</li>
+        </ul>
       </div>
+
     @endforeach
-  </ul>
+</div>
 @endsection

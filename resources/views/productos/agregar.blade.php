@@ -1,12 +1,12 @@
 @extends('plantillas.primer')
 
 @section('contenido')
-  <link rel="stylesheet" href="/css/aa.css">
- <h1>Cargar nuevo Producto</h1>
+  <link rel="stylesheet" href="/css/agregar.css">
+ <h1>Venda Su auto ya!!</h1>
 
 
 
- <form class="" action="/productos/guardar" method="post" enctype='multipart/form-data'>
+ <form class="agregar" action="/productos/guardar" method="post" enctype='multipart/form-data'>
 
    {{ csrf_field() }}
 <div class="form-group {{ $errors->has('titulo')?'has-error':'' }}">
@@ -14,6 +14,13 @@
    <input name="titulo" value="{{ old('titulo') }}" class="form-control" type="text" placeholder="Ingrese el título">
    @if($errors->has('titulo'))
      <span class="text-danger">{{ $errors->first('titulo') }}</span>
+   @endif
+</div>
+<div class="form-group {{ $errors->has('km')?'has-error':'' }}">
+   <label for="km">km</label>
+   <input name="km" value="{{ old('km') }}" class="form-control" type="text" placeholder="Ingrese el kilometraje">
+   @if($errors->has('km'))
+     <span class="text-danger">{{ $errors->first('km') }}</span>
    @endif
 </div>
 <div class="form-group {{ $errors->has('precio')?'has-error':'' }}">

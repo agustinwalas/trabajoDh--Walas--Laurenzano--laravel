@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class modelo extends Model
+class Modelo extends Model
 {
     protected $guarded = [];
+    protected $table = 'modelo';
 
     public function marcaM(){
       return $this->belongsTo(marca::class);
