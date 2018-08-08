@@ -12,24 +12,30 @@
  </div>
      <div class="nav-items">
         @guest
-          <ul class="nav-ul">
-           <li> <a href="{{ route('login') }}">Login</a> </li>
-           <li> <a href="{{ route('register') }}">Registrate</a> </li>
+          <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Sesion</span>
+        </a>
 
-         </ul>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="register">Registrarse</a>
+            <a class="dropdown-item" href="login">Logearse</a>
+        </div>
+    </li>
+
+    </ul>
         @else
           <ul class="navbar-nav ml-auto">
+            <img class="perfil" src="{{ \Storage::url(\Auth::user()->avatar) }} " alt="">
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             Hola {{ Auth::user()->name }} <span class="caret"></span>
         </a>
-
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
+                             document.getElementById('logout-form').submit();"> Cerrar sesion </a>
+            <a class="dropdown-item" href="faq">Preguntas Frecuentes</a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -37,15 +43,33 @@
             </form>
         </div>
     </li>
-    
+
     </ul>
 @endguest
 
       <div class="listacorta">
-          <i style="font-size:24px" class="fa">&#xf0c9;</i>
+        <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown">
+      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('logout') }}"
+             onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+              <button type="submit" name="button">Cerrar sesion</button>
+          </form>
       </div>
-     </div>
+    </li>
+    </ul>
   </div>
+
 <div class="noche">
   <label class="switch">
     <input type="checkbox">

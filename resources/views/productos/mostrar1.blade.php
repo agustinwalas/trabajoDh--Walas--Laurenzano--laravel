@@ -5,13 +5,14 @@
     <button type="submit" class="btn btn-success">Vende ahora Gratis!!</button>
     </form>
   </div>
+  <a href="/productos/mostrar1/{{$producto->id}}"></a>
 <div class="autos">
-    @foreach ($productos as $producto)
+
       <div class="auto">
         <div class="imagen">
           <img src="/storage/{{$producto->poster}}">
         </div>
-        <a href="/productos/mostrar1/{{$producto->id}}">{{$producto->titulo}}</a>
+        <h3>{{$producto->titulo}}</h3>
         <ul class="datos-secundarios">
           <li> {{$producto->precio}}$ </li>
           <li>{{$producto->estado}}</li>
@@ -19,7 +20,7 @@
         </ul>
       </div>
 
-    @endforeach
+
 </div>
-{{$productos->links()}}
+
 @endsection

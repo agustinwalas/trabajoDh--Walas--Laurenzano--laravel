@@ -1,8 +1,6 @@
 @extends('plantillas.primer')
 
 @section('contenido')
-
-@php print_r($errors); @endphp
   <form style="text-align:center;width:80%;margin:0 auto;margin-top:30px;margin-bottom:30px;"  method="post" enctype="multipart/form-data" class="conteiner">
       {{ csrf_field() }}
        <div class="form-group">

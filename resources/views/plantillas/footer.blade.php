@@ -1,9 +1,17 @@
 <footer style="margin-top:30px;"class="final">
+@guest
+@else
   <form id="logout-form" action="{{ route('logout') }}" method="POST">
       @csrf
-      <button type="submit" name="button">Cerrar sesion</button>
+      <button type="submit" class="btn btn-info" name="button">Cerrar sesion</button>
   </form>
-<a href="FAQ.php">Preguntas Frecuentes</a>
-<a href="#" class="fa fa-facebook"></a>
-<a href="#" class="fa fa-twitter"></a>
+@endguest
+<div style="font-size:5rem;position:absolute;right:50px;bottom:-380px;"class="icons">
+  <i class="fab fa-twitter"></i>
+  <i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+</div>
+
+
+
 </footer>

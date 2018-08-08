@@ -9,8 +9,12 @@ use App\Producto;
 
 class ProductosControlador extends Controller
 {
+  public function faq(){
+return view ('FAQ');
+
+  }
     public function listar(){
-    $productos = Producto::all();
+    $productos = Producto::paginate(9);
 
       return view('productos.listar')-> with ('productos', $productos);}
 
@@ -55,7 +59,7 @@ public function guardar(Request $request){
       'km' => $request->input('km'),
       'poster' => $ruta_image
     ]);
-
+    return redirect('/');
 }
 
 public function editar($id){
@@ -103,6 +107,13 @@ $modelo= modelo::all();
 
 return view('productos.mostrar') ->with('marcas',$marca) ->with('modelo', $modelo);
 }
+
+public function mostrar1($id){
+  $producto = producto::find($id);
+
+  return view('productos.mostrar1')-> with ('producto', $producto);}
+
+
 
 
 }

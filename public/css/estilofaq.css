@@ -1,8 +1,5 @@
 *{margin: 0;padding: 0;box-sizing: border-box; font-family: sans-serif;font-size:16px;}
-A:link {text-decoration:none;color:#fff;font-family: "Comic Sans MS", cursive, sans-serif;font-size: 1.2rem}
-A:link {text-decoration:none;color:#fff;font-family: "Comic Sans MS", cursive, sans-serif}
-A:visited {text-decoration:none;color:#fff;font-family: "Comic Sans MS", cursive, sans-serif}
-A:active {text-decoration:none;color:#fff;font-family: "Comic Sans MS", cursive, sans-serif}
+
 .logo img:hover { opacity: 0.5}
 html{font-size:16px}
 body{ background-color:  #ebebe0 }
