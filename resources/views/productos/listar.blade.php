@@ -1,6 +1,8 @@
 @extends('plantillas.primer')
 @section('contenido')
-
+  <div class="vender">
+    <button type="button" href="productos/agregar" class="btn btn-success">Vende ahora Gratis!!</button>
+  </div>
 <div class="autos">
     @foreach ($productos as $producto)
       <div class="auto">

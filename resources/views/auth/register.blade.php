@@ -2,29 +2,34 @@
 
 @section('contenido')
 
-<form style="text-align:center;"  method="post" enctype="multipart/form-data" class="conteiner">
+<form style="text-align:center;width:80%;margin:0 auto;margin-top:30px;margin-bottom:30px;"  method="post" enctype="multipart/form-data" class="conteiner">
+{{ csrf_field() }}
+@php print_r($errors)@endphp
      <div class="form-group">
-       <label for="usr">Mail:</label>
+       <label for="email">Mail:</label>
        <input type="email" name="email" class="form-control" value="">
      </div>
      <div class="form-group">
-       <label for="pwd">Contraseña:</label>
-       <input type="password" name="pass" class="form-control" value="">
+       <label for="password">Contraseña:</label>
+       <input type="password" name="password" class="form-control" value="">
      </div>
 
      <div class="form-group">
-       <label for="pwd">Repetir contraseña:</label>
-       <input type="password" name="pass2" class="form-control" value="">
+       <label for="password">Repetir contraseña:</label>
+       <input type="password" name="password_confirmation" class="form-control" value="">
      </div>
 
      <div class="form-group">
-           <label for="usr">Nombre y apellido:</label>
-           <input type="text" name="nombre" class="form-control" value="">
+           <label for="user">Nombre y apellido:</label>
+           <input type="text" name="name" class="form-control" value="">
          </div>
          <div class="item">
          <label for="">Provincia:</label>
          <select class="" name="provincia">
          <option value="">Elegí tu provincia</option>
+         <option value="Bsas">Buenos Aires</option>
+         <option value="Cordoba">Cordoba</option>
+         <option value="Mendoza">Mendoza</option>
 
          <br>
 
@@ -32,7 +37,7 @@
          <br>
          <br>
 
-         <button type="submit" class="btn btn-success">Ingresar</button>
+         <button type="submit" class="btn btn-success">Registrarse</button>
 
 
         </form>
