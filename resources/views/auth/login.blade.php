@@ -1,7 +1,7 @@
 @extends('plantillas.primer')
 
 @section('contenido')
-  <form style="text-align:center;width:80%;margin:0 auto;margin-top:30px;margin-bottom:30px;"  method="post" enctype="multipart/form-data" class="conteiner">
+  <form style="text-align:center;width:80%;margin:0 auto;margin-top:30px;margin-bottom:30px;"  method="post" id="login" enctype="multipart/form-data" class="conteiner">
       {{ csrf_field() }}
        <div class="form-group">
          <label for="usr">Mail:</label>
